@@ -13,6 +13,11 @@ class ProductsController extends Controller
         $entiretable = Products::all();
         return response()->json($entiretable);
     }
+    public function show($id)
+    {
+        $entiretable = Products::FindOrFail($id);
+        return response()->json($entiretable);
+    }
     public function indexByCategory($id)
     {
         $items = Products::all();
