@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Products extends Model
 {
-    public function category()
+    public function Category()
     {
         return $this->belongsTo(Categories::class);
     }

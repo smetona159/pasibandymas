@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,11 +19,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware('api')->get('items', 'ProductsController@index')->name('Products.index');
-Route::middleware('api')->get('items/{id}', 'ProductsController@show')->name('Products.show');
-Route::middleware('api')->get('/categories', 'CategoriesController@index')->name('Categories.index');
+Route::middleware('api')->get('items', 'ProductsController@Index')->name('Products.Index');
+Route::middleware('api')->get('items/{id}', 'ProductsController@Show')->name('Products.Show');
+Route::middleware('api')->get('categories', 'CategoriesController@Index')->name('Categories.Index');
 
-Route::middleware('api')->post('items', 'ProductsController@store')->name('Products.store');
+Route::middleware('api')->get('categories/{id}/items', 'ProductsController@ItemByCategoryId')->name('Products.ItemByCategoryId');
 
-Route::middleware('api')->post('categories', 'CategoriesController@store')->name('Categories.store');
+Route::middleware('api')->post('items', 'ProductsController@Store')->name('Products.Store');
+
+Route::middleware('api')->post('categories', 'CategoriesController@Store')->name('Categories.Store');
 
